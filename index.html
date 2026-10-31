@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Athania 17ᵗʰ Birthday ♡</title>
+
+  <link rel="icon" href="logo.jpg" onerror="this.href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💗</text></svg>'" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik:wght@500;700;800&family=Caveat:wght@600&family=Bowlby+One&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+  <meta name="apple-mobile-web-app-title" content="Athania" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#200816" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body data-passcode="726835" data-countdown-seconds="05" data-target-date="" data-autoplay-music="true" data-notify-key="de8b1e55-20f5-42e0-8c27-721d6e09a8e3">
+
+  
+  <video id="bg-video" class="bg-video" autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4" />
+  </video>
+  <div class="stars" id="stars"></div>
+
+  <!-- 3D TEXT BACKGROUND (home page) -->
+  <div id="fx" class="fx hidden" data-count="90" data-speed="150">
+    <div class="fx-world" id="fx-world"></div>
+  </div>
+ 
+  <div id="fx-texts" hidden>
+    <span>I love you</span>
+    <span>I love you</span>
+    <span>Happy 17ᵗʰ Birthday</span>
+    <span>Happy 17ᵗʰ Birthday</span>
+    <span>Forever ❤️</span>
+  </div>
+
+  <div id="fx-icons" hidden><span>❤️</span><span>🧡</span><span>💗</span><span>💞</span></div>
+
+  <!-- 1. ENTER CODE -->
+  <main id="page-code" class="page code-page">
+    <section class="left">
+      <h1 class="title">Enter Code</h1>
+      <div class="boxes" id="boxes">
+        <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+      </div>
+      <p class="hint">Hint:YOUR CP PASSWORD</p>
+      <div class="pad" id="pad">
+        <button class="key" data-k="1">1</button>
+        <button class="key" data-k="2">2</button>
+        <button class="key" data-k="3">3</button>
+        <button class="key" data-k="4">4</button>
+        <button class="key" data-k="5">5</button>
+        <button class="key" data-k="6">6</button>
+        <button class="key" data-k="7">7</button>
+        <button class="key" data-k="8">8</button>
+        <button class="key" data-k="9">9</button>
+        <button class="key" data-k=".">.</button>
+        <button class="key" data-k="0">0</button>
+        <button class="key del" data-k="DEL">DEL</button>
+      </div>
+    </section>
+    <section class="right">
+      <div class="frame">
+        <span class="frame-star">★</span>
+        <div class="frame-inner" id="frame-inner" title="Tap to see the full photo">
+          <img src="cover.jpg" alt="" onerror="this.remove()" />
+
+        </div>
+        <div class="frame-mascot">
+      <svg class="mascot" viewBox="0 0 100 90">
+        <defs><linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fb7"/><stop offset="1" stop-color="#e0366f"/></linearGradient></defs>
+        <path d="M50 84 C14 58 4 38 4 25 C4 12 14 4 26 4 C36 4 45 10 50 19 C55 10 64 4 74 4 C86 4 96 12 96 25 C96 38 86 58 50 84 Z" fill="url(#hg1)" stroke="#a31449" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M20 22 C22 15 28 12 34 13" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- POPUP (mali o tama) -->
+  <div id="wrong-overlay" class="overlay hidden">
+    <div class="popup">
+      <h2 id="pop-title">Wrong Passcode!</h2>
+      <div class="gif-slot" id="gif-wrong">
+        <img src="wrong.gif" alt="" onerror="this.remove()" />
+        
+      </div>
+      <div class="gif-slot hidden" id="gif-right">
+        <img src="correct.gif" alt="" onerror="this.remove()" />
+        
+      </div>
+      <p id="pop-text">Try Again?</p>
+      <button id="pop-btn">Retry</button>
+    </div>
+  </div>
+
+  <!-- 2. COUNTDOWN -->
+  <main id="page-count" class="page count-page hidden">
+    <div class="bokeh" id="bokeh"></div>
+    <div class="count-inner">
+      <p class="c-small">✦ counting down ✦</p>
+      <h1 class="c-title">your special day<em>is coming</em></h1>
+      <p class="c-sub">something beautiful is waiting for you ♡</p>
+      <div class="c-boxes">
+        <div class="c-box"><b id="t-d">00</b><span>days</span></div>
+        <div class="c-box"><b id="t-h">00</b><span>hours</span></div>
+        <div class="c-box"><b id="t-m">00</b><span>minutes</span></div>
+        <div class="c-box"><b id="t-s">00</b><span>seconds</span></div>
+      </div>
+      <p class="c-note">opens automatically when the time is up</p>
+    </div>
+  </main>
+
+  <!-- 3. HOME -->
+  <main id="page-bday" class="page bday hidden">
+    <nav class="nav" id="nav">
+    
+      <a class="brand" href="#home"><img class="brand-icon" src="logo.jpg" alt="" onerror="this.remove()"><span>ANIA</span></a>
+      <div class="links">
+        <a href="#home" class="active">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#letter">Letter</a>
+        <a href="#love">Flowers</a>
+        <a href="#ask">Love</a>
+      </div>
+    </nav>
+
+    <section id="home" class="bday-hero">
+      <div class="hb">
+        <span class="spark a">✦</span><span class="spark b">✦</span><span class="spark c">✦</span>
+        <p class="hb-script"><span id="typed" data-text="Happy Birthday"></span><i class="caret"></i></p>
+        <p class="hb-big">ATHANIA!!</p>
+      </div>
+      
+      <div class="bday-stage" id="bday-stage" role="button" tabindex="0" aria-label="Tap to shoot the heart" data-hint-shoot="tap to shoot ♡" data-hint-again="tap the cake to play again ♡">
+        <div class="heart-wrap">
+          <svg class="mascot" viewBox="0 0 100 90">
+            <defs><linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fb7"/><stop offset="1" stop-color="#e0366f"/></linearGradient></defs>
+            <path d="M50 84 C14 58 4 38 4 25 C4 12 14 4 26 4 C36 4 45 10 50 19 C55 10 64 4 74 4 C86 4 96 12 96 25 C96 38 86 58 50 84 Z" fill="url(#hg2)" stroke="#a31449" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M20 22 C22 15 28 12 34 13" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="cake-wrap">
+          <svg viewBox="0 0 200 190" class="cake-svg">
+            <defs>
+              <linearGradient id="ckBottom" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa6cb"/><stop offset="1" stop-color="#ff6fa8"/></linearGradient>
+              <linearGradient id="ckTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd0e3"/><stop offset="1" stop-color="#ff93bf"/></linearGradient>
+              <radialGradient id="flameG" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#fff7b0"/><stop offset=".55" stop-color="#ffc83d"/><stop offset="1" stop-color="#ff7a2b"/></radialGradient>
+            </defs>
+            <ellipse cx="100" cy="174" rx="82" ry="11" fill="#fff4f9" stroke="#ffb3d1" stroke-width="2"/>
+            <!-- ibabang layer -->
+            <rect x="28" y="112" width="144" height="60" rx="11" fill="url(#ckBottom)" stroke="#c2255c" stroke-width="2.5"/>
+            <path d="M28 120 Q40 104 52 120 T76 120 T100 120 T124 120 T148 120 T172 120 L172 112 L28 112Z" fill="#fff" stroke="#c2255c" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M44 120 v10 a5 5 0 0 0 10 0 v-10 M96 120 v14 a5 5 0 0 0 10 0 v-14 M146 120 v9 a5 5 0 0 0 10 0 v-9" fill="#fff" stroke="#c2255c" stroke-width="2" stroke-linejoin="round"/>
+            <text x="100" y="158" text-anchor="middle" font-size="22" fill="#fff">♥</text>
+            <circle cx="42" cy="150" r="3" fill="#fff6a8"/><circle cx="64" cy="160" r="3" fill="#a8f0ff"/><circle cx="140" cy="152" r="3" fill="#fff6a8"/><circle cx="160" cy="162" r="3" fill="#a8f0ff"/><circle cx="82" cy="148" r="2.5" fill="#fff"/>
+            <!-- itaas na layer -->
+            <rect x="54" y="72" width="92" height="44" rx="10" fill="url(#ckTop)" stroke="#c2255c" stroke-width="2.5"/>
+            <path d="M54 80 Q64 66 74 80 T94 80 T114 80 T134 80 T146 80 L146 72 L54 72Z" fill="#fff" stroke="#c2255c" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="72" cy="100" r="3" fill="#fff"/><circle cx="100" cy="106" r="3" fill="#ffe27a"/><circle cx="128" cy="100" r="3" fill="#fff"/>
+            <!-- kandila -->
+            <g class="candle"><rect x="77" y="46" width="7" height="27" rx="2" fill="#fff" stroke="#c2255c" stroke-width="1.8"/><path d="M77 56 l7 -4 M77 64 l7 -4" stroke="#ff8fb7" stroke-width="2"/><path class="flame" d="M80.5 28 C75 36 75 44 80.5 46 C86 44 86 36 80.5 28Z" fill="url(#flameG)"/></g>
+            <g class="candle c2"><rect x="96.5" y="42" width="7" height="31" rx="2" fill="#fff" stroke="#c2255c" stroke-width="1.8"/><path d="M96.5 54 l7 -4 M96.5 62 l7 -4" stroke="#ff8fb7" stroke-width="2"/><path class="flame" d="M100 24 C94.5 32 94.5 40 100 42 C105.5 40 105.5 32 100 24Z" fill="url(#flameG)"/></g>
+            <g class="candle c3"><rect x="116" y="46" width="7" height="27" rx="2" fill="#fff" stroke="#c2255c" stroke-width="1.8"/><path d="M116 56 l7 -4 M116 64 l7 -4" stroke="#ff8fb7" stroke-width="2"/><path class="flame" d="M119.5 28 C114 36 114 44 119.5 46 C125 44 125 36 119.5 28Z" fill="url(#flameG)"/></g>
+          </svg>
+        </div>
+
+        <!-- pana at bow -->
+        <svg class="bow-svg" viewBox="0 0 360 200" aria-hidden="true">
+          <path d="M45 45 C84 72 84 118 45 145" fill="none" stroke="#ffb3d1" stroke-width="6" stroke-linecap="round"/>
+          <path d="M45 45 C84 72 84 118 45 145" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.5" stroke-linecap="round" transform="translate(-1.5 0)"/>
+          <rect x="66" y="88" width="8" height="14" rx="3" fill="#c2255c"/>
+          <path id="bow-string" d="M45 45 Q45 95 45 145" fill="none" stroke="#fff" stroke-width="1.6"/>
+          <g id="bow-arrow" transform="translate(45 95)">
+            <line x1="0" y1="0" x2="64" y2="0" stroke="#f6e3cf" stroke-width="3" stroke-linecap="round"/>
+            <path d="M58 -7 L76 0 L58 7 Z" fill="#ff6fa8" stroke="#a31449" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M0 0 L-9 -7 L8 -2 Z M0 0 L-9 7 L8 2 Z M10 0 L3 -6 L16 -2 Z M10 0 L3 6 L16 2 Z" fill="#ffb3d1"/>
+          </g>
+        </svg>
+        <div class="burst" id="burst"></div>
+      </div>
+      <p class="shoot-hint" id="shoot-hint"></p>
+          </section>
+
+    <section id="gallery" class="sec">
+      <h2 class="sec-title">Gallery</h2>
+      <!-- 10 na picture: pic1.jpg … pic10.jpg. Ang data-caption ay ang caption sa ilalim ng bawat litrato (palitan ng sarili mong petsa/alaala). Para bawasan, burahin lang ang <div class="pcard"> na hindi mo kailangan. -->
+      <div class="pile" id="pile" tabindex="0" aria-label="Photo stack. Tap to zoom, swipe or use the arrows to see more.">
+        <div class="pcard" data-caption="Beautiful"><div class="pcard-in"><img src="1.png" alt="" onerror="this.remove()" /><span class="pcard-ph">1</span></div></div>
+        <div class="pcard" data-caption="♡"><div class="pcard-in"><img src="2.png" alt="" onerror="this.remove()" /><span class="pcard-ph">2</span></div></div>
+        <div class="pcard" data-caption="favorite pic ko'to HAHAHA"><div class="pcard-in"><img src="3.png" alt="" onerror="this.remove()" /><span class="pcard-ph">3</span></div></div>
+        <div class="pcard" data-caption="😍"><div class="pcard-in"><img src="4.png" alt="" onerror="this.remove()" /><span class="pcard-ph">4</span></div></div>
+        <div class="pcard" data-caption="mahaba pa buhok mo dito"><div class="pcard-in"><img src="5.png" alt="" onerror="this.remove()" /><span class="pcard-ph">5</span></div></div>
+        <div class="pcard" data-caption="ganda mo dito sobra"><div class="pcard-in"><img src="6.jpg" alt="" onerror="this.remove()" /><span class="pcard-ph">6</span></div></div>
+        <div class="pcard" data-caption="Gandaaaaa"><div class="pcard-in"><img src="7.jpg" alt="" onerror="this.remove()" /><span class="pcard-ph">7</span></div></div>
+        <div class="pcard" data-caption="April this time"><div class="pcard-in"><img src="8.jpg" alt="" onerror="this.remove()" /><span class="pcard-ph">8</span></div></div>
+        <div class="pcard" data-caption="Parang ako pag nag pic ah HAHAHA"><div class="pcard-in"><img src="9.jpeg" alt="" onerror="this.remove()" /><span class="pcard-ph">9</span></div></div>
+        <div class="pcard" data-caption="Gorgeous"><div class="pcard-in"><img src="10.jpg" alt="" onerror="this.remove()" /><span class="pcard-ph">10</span></div></div>
+      </div>
+      <div class="pile-ctrl">
+        <button id="pile-prev" aria-label="Previous photo">‹</button>
+        <span id="pile-count">1 / 10</span>
+        <button id="pile-next" aria-label="Next photo">›</button>
+      </div>
+      <p class="pile-cap" id="pile-cap"></p>
+      <p class="gal-hint">tap a photo to zoom · swipe for more ♡</p>
+    </section>
+        <section id="letter" class="sec">
+      <h2 class="sec-title">Letter</h2>
+      <div class="env-pile" id="env-pile">
+        <div class="envelope" id="envelope" data-caption="For your birthday! ❤️" role="button" tabindex="0" aria-label="Open letter 1">
+          <div class="env-back"></div>
+          <div class="env-paper"></div>
+          <div class="env-front"></div>
+          <div class="env-flap"><span class="env-seal">♥</span></div>
+        </div>
+        <div class="envelope env-alt" id="envelope2" data-caption="Open when you miss me ♡" role="button" tabindex="0" aria-label="Open letter 2">
+          <div class="env-back"></div>
+          <div class="env-paper"></div>
+          <div class="env-front"></div>
+          <div class="env-flap"><span class="env-seal">♥</span></div>
+        </div>
+      </div>
+      <div class="pile-ctrl">
+        <button id="env-prev" type="button" aria-label="Previous letter">‹</button>
+        <span id="env-count">1 / 2</span>
+        <button id="env-next" type="button" aria-label="Next letter">›</button>
+      </div>
+      <p class="pile-cap" id="env-cap"></p>
+      <p class="gal-hint" id="env-hint">tap the envelope ♡</p>
+    </section>
+
+    <section id="love" class="sec love-sec">
+      <!-- ✏️ Palitan ang text dito -->
+      <div class="love-head">
+        <p class="tap-hint">TAP TO OPEN</p>
+        <h2 class="love-title">Flowers For You</h2>
+      </div>
+
+      <div class="bouquet" id="bouquet" role="button" tabindex="0" aria-expanded="false" aria-label="Open or close the bouquet">
+        <div class="bouquet-dark"></div>
+        <div class="bouquet-glow"></div>
+        <div class="petals" id="petals"></div>
+      <svg class="bouquet-svg" viewBox="0 0 300 400" aria-hidden="true">
+        <defs>
+          <linearGradient id="tPetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--t1)"/><stop offset=".5" style="stop-color:var(--t2)"/><stop offset="1" style="stop-color:var(--t3)"/></linearGradient>
+          <radialGradient id="tShine" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          <linearGradient id="tStem" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2e8b3f"/><stop offset="1" stop-color="#5cc46e"/></linearGradient>
+          <linearGradient id="tLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86e08e"/><stop offset="1" stop-color="#2f8f44"/></linearGradient>
+          <linearGradient id="tPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--paper1)"/><stop offset="1" style="stop-color:var(--paper3)"/></linearGradient>
+        </defs>
+
+        <!-- balot na nananatili sa likod ng mga bulaklak -->
+        <g class="wrap-open">
+          <path d="M150 338 L66 214 L90 172 L150 214 Z" fill="var(--paper2)"/>
+          <path d="M150 338 L234 214 L210 172 L150 214 Z" fill="var(--paper1)"/>
+          <path d="M150 338 L106 206 L150 168 L194 206 Z" fill="var(--paper3)"/>
+          <path d="M120 338 L180 338 L164 396 L136 396 Z" fill="url(#tPaper)"/>
+        </g>
+
+        <g class="stems">
+          <path class="stem" pathLength="1" style="--d:0.25s" d="M150 335 Q150 200 150 49"/>
+          <path class="stem" pathLength="1" style="--d:0.35s" d="M150 335 Q139 208 100 63"/>
+          <path class="stem" pathLength="1" style="--d:0.45s" d="M150 335 Q161 208 200 63"/>
+          <path class="stem" pathLength="1" style="--d:0.55s" d="M150 335 Q130 222 58 91"/>
+          <path class="stem" pathLength="1" style="--d:0.65s" d="M150 335 Q170 222 242 91"/>
+          <path class="stem" pathLength="1" style="--d:0.75s" d="M150 335 Q144 222 125 91"/>
+          <path class="stem" pathLength="1" style="--d:0.85s" d="M150 335 Q156 222 175 91"/>
+          <path class="stem" pathLength="1" style="--d:0.95s" d="M150 335 Q135 238 80 123"/>
+          <path class="stem" pathLength="1" style="--d:1.05s" d="M150 335 Q165 238 220 123"/>
+          <path class="stem" pathLength="1" style="--d:1.15s" d="M150 335 Q150 230 150 107"/>
+          <path class="stem" pathLength="1" style="--d:1.25s" d="M150 335 Q142 242 112 133"/>
+          <path class="stem" pathLength="1" style="--d:1.35s" d="M150 335 Q158 242 188 133"/>
+          <path class="stem" pathLength="1" style="--d:1.45s" d="M150 335 Q130 254 60 155"/>
+          <path class="stem" pathLength="1" style="--d:1.55s" d="M150 335 Q170 254 240 155"/>
+          <path class="stem" pathLength="1" style="--d:1.65s" d="M150 335 Q150 248 150 143"/>
+        </g>
+        <g class="leaves">
+          <g transform="translate(150 181) rotate(-28) scale(0.9)"><path class="leaf" style="--d:0.75s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(150 113) rotate(-152) scale(0.75)"><path class="leaf" style="--d:0.75s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(174 169) rotate(-28) scale(0.9)"><path class="leaf" style="--d:0.95s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(195 187) rotate(-28) scale(0.9)"><path class="leaf" style="--d:1.15s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(160 204) rotate(-28) scale(0.9)"><path class="leaf" style="--d:1.35s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(167 146) rotate(-152) scale(0.75)"><path class="leaf" style="--d:1.35s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(184 206) rotate(-28) scale(0.9)"><path class="leaf" style="--d:1.55s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(131 213) rotate(-152) scale(0.9)"><path class="leaf" style="--d:1.75s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(169 213) rotate(-28) scale(0.9)"><path class="leaf" style="--d:1.85s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(113 239) rotate(-152) scale(0.9)"><path class="leaf" style="--d:1.95s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(88 196) rotate(-28) scale(0.75)"><path class="leaf" style="--d:1.95s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(194 226) rotate(-28) scale(0.9)"><path class="leaf" style="--d:2.05s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+          <g transform="translate(150 219) rotate(-28) scale(0.9)"><path class="leaf" style="--d:2.15s" d="M0 0 C10 -11 30 -10 40 3 C27 13 9 13 0 0Z"/></g>
+        </g>
+        <g class="tulips">
+          <g transform="translate(150 46) rotate(0) scale(0.95)"><g class="sway" style="--d:1.75s"><g class="head" style="--d:1.15s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(100 60) rotate(-7) scale(0.95)"><g class="sway" style="--d:1.85s"><g class="head" style="--d:1.25s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(200 60) rotate(7) scale(0.95)"><g class="sway" style="--d:1.95s"><g class="head" style="--d:1.35s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(58 88) rotate(-13) scale(0.9)"><g class="sway" style="--d:2.05s"><g class="head" style="--d:1.45s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(242 88) rotate(13) scale(0.9)"><g class="sway" style="--d:2.15s"><g class="head" style="--d:1.55s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(125 88) rotate(-4) scale(1)"><g class="sway" style="--d:2.25s"><g class="head" style="--d:1.65s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(175 88) rotate(4) scale(1)"><g class="sway" style="--d:2.35s"><g class="head" style="--d:1.75s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(80 120) rotate(-11) scale(1)"><g class="sway" style="--d:2.45s"><g class="head" style="--d:1.85s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(220 120) rotate(11) scale(1)"><g class="sway" style="--d:2.55s"><g class="head" style="--d:1.95s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(150 104) rotate(0) scale(1.05)"><g class="sway" style="--d:2.65s"><g class="head" style="--d:2.05s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(112 130) rotate(-5) scale(1.05)"><g class="sway" style="--d:2.75s"><g class="head" style="--d:2.15s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(188 130) rotate(5) scale(1.05)"><g class="sway" style="--d:2.85s"><g class="head" style="--d:2.25s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(60 152) rotate(-14) scale(0.95)"><g class="sway" style="--d:2.95s"><g class="head" style="--d:2.35s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(240 152) rotate(14) scale(0.95)"><g class="sway" style="--d:3.05s"><g class="head" style="--d:2.45s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+<g transform="translate(150 140) rotate(0) scale(1.1)"><g class="sway" style="--d:3.15s"><g class="head" style="--d:2.55s">
+            <path class="p-side" d="M0 2 C-22 -2 -25 -33 -18 -53 C-10 -45 -4 -35 0 -22Z"/>
+            <path class="p-side" d="M0 2 C22 -2 25 -33 18 -53 C10 -45 4 -35 0 -22Z"/>
+            <path class="p-mid" d="M-14 -2 C-21 -22 -10 -44 0 -59 C10 -44 21 -22 14 -2 C6 5 -6 5 -14 -2Z"/>
+            <path d="M0 -57 C-3 -36 -3 -16 0 1" fill="none" stroke="var(--t3)" stroke-opacity=".35" stroke-width="1.2"/>
+            <ellipse cx="-5" cy="-30" rx="4" ry="13" fill="url(#tShine)" opacity=".85"/>
+          </g></g></g>
+        </g>
+
+        <!-- nakabalot (nagbubukas / nagsasara pag pinindot) -->
+        <g class="wrap-closed">
+          <path class="sheet s1" d="M150 338 L48 206 L58 138 L114 150 Z"/>
+          <path class="sheet s2" d="M150 338 L252 206 L242 138 L186 150 Z"/>
+          <path class="sheet s3" d="M150 338 L76 186 L92 118 L142 142 Z"/>
+          <path class="sheet s4" d="M150 338 L224 186 L208 118 L158 142 Z"/>
+          <path class="sheet s5" d="M150 338 L110 152 L150 108 L190 152 Z"/>
+          <path class="fold" d="M150 338 L150 108 M150 338 L92 118 M150 338 L208 118 M150 338 L58 138 M150 338 L242 138"/>
+        </g>
+
+        <g class="ribbon">
+          <path d="M150 336 L120 321 Q109 336 124 347 Z" fill="var(--t1)" stroke="var(--t3)" stroke-width="1.5"/>
+          <path d="M150 336 L180 321 Q191 336 176 347 Z" fill="var(--t1)" stroke="var(--t3)" stroke-width="1.5"/>
+          <circle cx="150" cy="336" r="7.5" fill="var(--t2)" stroke="#fff" stroke-opacity=".8" stroke-width="1.5"/>
+        </g>
+      </svg>
+      </div>
+      <p class="close-hint">tap again to close</p>
+    </section>
+
+    <!-- REASONS: "Reasons I love you". Pwede kang magdagdag/magbawas ng <li> sa listahan sa baba. -->
+    <section id="reasons" class="sec reasons-sec">
+      <h2 class="sec-title">Reasons I Love You</h2>
+      <h2 class="sec-title">(Kulang payan😝)</h2>
+      <p class="r-count" id="r-count">tap the heart ♡</p>
+      <button class="r-heart" id="r-heart" type="button" aria-label="Show a reason"><span>♥</span></button>
+      <div class="r-card" id="r-card" aria-live="polite"><p id="r-text">…</p></div>
+      <ol id="r-list" hidden>
+        <li>Because because you make me happy. Kahit simpleng usap lang natin, masaya na ako.</li>
+        <li>because I can be myself around you. Comfortable ako sa'yo.</li>
+        <li>because you're the person I want to be with.</li>
+        <li>eh ikaw lang gusto ko eh, bakit ba HAHAHA</li>
+        <li>I'm still waiting</li>
+        <li>kasi ikaw na yan </li>
+        <li>Because you're you, and that's more than enough.</li>
+      </ol>
+    </section>
+
+
+    <section id="ask" class="sec ask-sec">
+      <div class="ask-petals" id="ask-petals"></div>
+
+      <div class="ask-card" id="ask-card">
+        <div class="ask-gif" id="ask-gif">
+          <div class="gif-slot" id="gif-q">
+            <img src="gif1.gif" alt="" onerror="this.remove()"><span class="ph">🥺</span>
+          </div>
+          <div class="gif-slot hidden" id="gif-a">
+            <img src="gif2.gif" alt="" onerror="this.remove()"><span class="ph">🥰</span>
+          </div>
+        </div>
+
+        <h2 class="ask-q" id="ask-q">DO YOU STILL LOVE ME?</h2>
+
+        <div class="ask-stage" id="ask-stage">
+          <button class="yes-btn" id="yes-btn" type="button">YES</button>
+          <button class="no-btn" id="no-btn" type="button">NO</button>
+        </div>
+
+        <div class="ask-ans hidden" id="ask-ans">
+          <p class="ans-title">IKAW HA</p>
+          <p class="ans-line">YOU STILL LOVE ME HA🤭</p>
+          <p class="ans-line">(I miss you so much po) 🥺🤭</p>
+          <button class="ans-again" id="ask-again" type="button">↺ again</button>
+        </div>
+      </div>
+
+      <!-- Mga text ng NO button, sunod-sunod bawat pindot. Pwede kang magdagdag ng <li>. -->
+       <ol id="no-msgs" hidden>
+        <li>Sure ka na ba?</li>
+        <li>Huling tanong na 'to</li>
+        <li>Lumalaki na yung YES oh</li>
+        <li>Ayaw mo parin?</li>
+        <li>Last chance na oh</li>
+        <li>Hindi?</li>
+        <li>Talaga?</li>
+        <li>Pag-iisipan mo mabuti HAHA</li>
+        <li>One chance please</li>
+        <li>last na talaga?</li>
+      </ol>
+    </section>
+
+    <!-- REPLY: dito siya mag-message. data-email = OPTIONAL na email kung saan ipapadala ang message -->
+    <section id="reply" class="reply-sec" data-email="">
+      <h2 class="reply-title">Reply</h2>
+      <textarea id="reply-text" class="reply-box" rows="4" placeholder="Write your message…"></textarea>
+      <button id="reply-btn" class="reply-btn" type="button">Send ♡</button>
+      <p class="reply-thanks hidden" id="reply-thanks">Sent! Thank you ♡</p>
+    </section>
+
+    <!-- FOOTER: ilagay ang link mo sa href ng bawat icon. Pag pinindot niya, mapupunta siya sa app/link (sa cellphone, bubukas ang mismong app kung naka-install). Para burahin ang isa, tanggalin lang ang buong <a>. -->
+    <footer class="foot" id="foot">
+      <div class="click-me" aria-hidden="true"><span>click me</span><svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="foot-icons">
+       
+        <a class="soc" href="https://www.tiktok.com/@xivnmissy/photo/7678391986872765717?is_from_webapp=1&sender_device=pc&web_id=7680227256736335377" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3h-2.9v11.7a2.6 2.6 0 1 1-2.6-2.6c.3 0 .6 0 .8.1V9.2a5.5 5.5 0 1 0 4.7 5.5V8.9a6.6 6.6 0 0 0 3.8 1.2V7.2a3.8 3.8 0 0 1-3.8-3.6z"/></svg>
+        </a>
+        
+        <a class="soc" href="https://www.instagram.com/reel/DeJg-VFTFzm/?utm_source=ig_web_copy_link&xtok=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4.6"/><circle cx="12" cy="12" r="3.7"/><circle cx="16.9" cy="7.1" r=".6" fill="currentColor"/></svg>
+        </a>
+      
+        <a class="soc" href="https://www.tiktok.com/@delaneyy.26/video/7663249529969315102?is_from_webapp=1&sender_device=pc&web_id=7680227256736335377" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 3h-2.9v11.7a2.6 2.6 0 1 1-2.6-2.6c.3 0 .6 0 .8.1V9.2a5.5 5.5 0 1 0 4.7 5.5V8.9a6.6 6.6 0 0 0 3.8 1.2V7.2a3.8 3.8 0 0 1-3.8-3.6z"/></svg>
+        </a>
+      </div>
+      <button class="install-btn hidden" id="install-btn" type="button">📲 Add to home screen</button>
+      <p class="install-tip hidden" id="install-tip">Sa iPhone: pindutin ang Share ⬆︎ → "Add to Home Screen"</p>
+      <p class="foot-text">© MR.IKIT. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- LETTER READER: ang sulat mo. Pwede kang magdagdag ng kahit ilang <p>, kusang may scroll kapag mahaba. -->
+  <div id="reader" class="reader hidden" role="dialog" aria-modal="true">
+    <button class="reader-close" id="reader-close" aria-label="Close letter">✕</button>
+   <div class="letter-wrap" id="letter-wrap-1">
+
+    <div class="l-photo lp-top"><img src="letter1.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+    <div class="l-photo lp-side"><img src="letter2.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+    <div class="l-photo lp-bottom"><img src="letter3.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+    <article class="letter-paper" id="letter-paper">
+      <div class="letter-scroll" id="letter-scroll" tabindex="0">
+      <p class="l-to">Dear Ania,</p>
+      <p>Hello!! Happy Happy 17ᵗʰ Birthday Athania just enjoy your day and be happy.  💗</p>
+      <p>And ang wish ko lang para sayo ay good health at iwasan mo na yung mga alam mong makakasama sayo at sana maging commited kana kay lord kahit yun lang muna HAHAHAHA</p>
+      <p>Hindi ko alam kung magugustuhan mo 'to pero ginawa ko parin sana magustuhan mo and i hope you enjoy sa ginawa kong 'to kahit dimo birthday mabubuksan mo 'to memories narin yan HAHAHAHA</p>
+      <p>Malay mo kasi diba humandusay nalang ako diyan edi kahit paano may remembrance ako sayo HAHAHAHA,kapag may gusto kang sabihin reply kalang dun sa baba pag nakita mo yung chat box dun sa baba.</p>
+      <p>dami kong gustong sabihin pero diko masabi kasi birthday letter dapat to eh HAHAHAHA, pero yun i'm still waiting to you until you ready to commit alam ko wala pa akong napapatunayan or ipagmamalaki pero i'm still here waiting you,sana pag nababasa moto tumututog na yung third song HAHAHAHA</p>
+      <p>and i'm here if may problema ka wala kang malapitan nandito lang ako pwede mo akong kausapin kung saang way ako makakatulong sayo,tutulungan kita kahit ano at saan payan, lagi mo lang tandaan na pag wala kang malapitan or masabihan ng problem mo may IKIT kang malalapitan.</p>
+      <p>For now i'm still waiting you silently dami kong gustong sabihin pero next time nalang, call or chat mo lang ako if may problema ha, yun lang enjoy the rest of your birthday. </p>
+      <p>Happy birthday, Athania. I hope this year gives you everything you've been wishing for.</p>
+      <p>I love you so much!!🥰🤭</p>
+      <p class="l-from">Always yours,<br />— Your MR.IKIT♡</p>
+      </div>
+    </article>
+    </div>
+    <div class="letter-wrap hidden" id="letter-wrap-2">
+  <div class="l-photo lp-top"><img src="letter1.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+  <div class="l-photo lp-side"><img src="letter2.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+  <div class="l-photo lp-bottom"><img src="letter3.jpg" alt="" onerror="this.remove()"><span class="ph">♥</span></div>
+  <article class="letter-paper">
+    <div class="letter-scroll" id="letter-scroll-2" tabindex="0">
+      <p class="l-to">My love,</p>
+      <p>Kung binabasa mo ito, baka miss mo na ako. Alam mo bang ako rin, miss na miss na kita.</p>
+      <p>Tandaan mo lang: kahit malayo tayo sa isa't isa, isang message lang ang layo ko. Nandito ako palagi para sa'yo.</p>
+      <p>Huminga ka muna, ngumiti, at isipin mo ang huling beses na tumawa tayo nang sobra. Doon ako ngayon, kasama mo.</p>
+      <p class="l-from">Mahal na mahal kita,<br />— Ikit ♡</p>
+    </div>
+  </article>
+</div>
+  </div>
+
+
+  <div id="photo-zoom" class="photo-zoom hidden" role="dialog" aria-modal="true">
+    <button class="lb-close" id="pz-close" aria-label="Close">✕</button>
+    <img id="pz-img" alt="" />
+  </div>
+
+
+  <!-- ===== CHAT NAMIN =====
+       1) Ilagay ang firebaseConfig mo sa baba (galing sa Firebase console).
+       2) Ilagay ang 2 email ninyo at ang pangalan ng bawat isa sa "users".
+       3) Dapat parehong email ang nasa Firebase Authentication at sa Firestore rules. -->
+<!-- I-PASTE ANG BUONG FILE NA ITO sa index.html, sa taas lang ng linyang LIGHTBOX (o sa ibabaw ng body-end tag). Isang beses lang. -->
+  <!-- ===== CHAT NAMIN =====
+       1) Ilagay ang firebaseConfig mo sa baba (galing sa Firebase console).
+       2) Ilagay ang 2 email ninyo at ang pangalan ng bawat isa sa "users".
+       3) Dapat parehong email ang nasa Firebase Authentication at sa Firestore rules. -->
+  <script>
+    window.CHAT_CONFIG = {
+      firebase: {
+        apiKey: "AIzaSyDBt-lZ5E4U37LvsUqOWEmPJiqbK6DM9Fk",
+        authDomain: "birthday-999c3.firebaseapp.com",
+        projectId: "birthday-999c3",
+        storageBucket: "birthday-999c3.firebasestorage.app",
+        messagingSenderId: "3355167392",
+        appId: "1:3355167392:web:d55b4950cfd71d616017c5"
+      },
+      users: {
+        "capaciteranuel@gmail.com": "Ikit",
+        "athaniaangela@gmail.com": "Ania"
+      }
+    };
+  </script>
+
+  <button id="chat-fab" class="chat-fab" type="button" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+    <span id="chat-badge" class="chat-badge hidden">0</span>
+  </button>
+
+  <section id="chat-panel" class="chat-panel hidden" role="dialog" aria-label="Chat">
+    <header class="chat-head">
+      <b id="chat-title">Chat ♡</b>
+      <span class="chat-head-btns">
+        <button id="chat-logout" type="button" class="chat-link">Log out</button>
+        <button id="chat-close" type="button" class="chat-x" aria-label="Close chat">✕</button>
+      </span>
+    </header>
+
+    <div id="chat-setup" class="chat-view hidden">
+      
+    </div>
+
+    <div id="chat-login" class="chat-view hidden">
+      <form id="chat-login-form" class="chat-login">
+        <p class="chat-note">Miss me? HAHAHAHA</p>
+        <input id="chat-email" type="email" placeholder="Email" autocomplete="username" required />
+        <input id="chat-pass" type="password" placeholder="Password" autocomplete="current-password" required />
+        <button type="submit" class="chat-go">Log in</button>
+        <p id="chat-login-err" class="chat-err"></p>
+      </form>
+    </div>
+
+    <div id="chat-room" class="chat-view chat-room hidden">
+      <div id="chat-list" class="chat-list"></div>
+      <form id="chat-form" class="chat-form">
+        <label class="chat-attach" aria-label="Send a photo">📷<input id="chat-photo" type="file" accept="image/*" hidden /></label>
+        <input id="chat-input" type="text" placeholder="Write a message…" autocomplete="off" maxlength="1000" />
+        <button id="chat-send" type="submit" class="chat-sendbtn" aria-label="Send">➤</button>
+      </form>
+    </div>
+  </section>
+
+  <script src="chat.js"></script>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">‹</button>
+    <figure class="lb-fig">
+      <div class="lb-img" id="lb-img"></div>
+      <figcaption id="lb-count"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Next">›</button>
+  </div>
+
+  <!-- MUSIC PLAYLIST (isa o higit pang kanta) -->
+  <div id="playlist" hidden>
+    
+    <div class="track" data-title="Just The Way You Are" data-artist="Bruno Mars" data-src="song1.mp3" data-cover="sp1.png"></div>
+    <div class="track" data-title="About You" data-artist="The 1975" data-src="song2.mp3" data-cover="sp2.jpg"></div>
+    <div class="track" data-title="Synesthesia" data-artist="Mayonnaise " data-src="song3.mp3" data-cover="sp3.png"></div>
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div id="player" class="player hidden">
+    <button class="mini" id="mini" aria-label="Open music player">
+      <span class="disc" id="disc-mini"></span>
+      <span class="mini-text"><b id="mini-title"></b><small id="mini-artist"></small></span>
+      <span class="dots">●●●</span>
+    </button>
+    <div class="card hidden" id="card">
+      <!-- PLAYLIST button: nasa loob ng player (taas-kaliwa). Pag pinindot, lalabas ang listahan ng kanta. -->
+      <button id="songs-btn" class="songs-btn" type="button" aria-label="Playlist">Songs</button>
+      <div id="songs-panel" class="songs-panel hidden" role="listbox"></div>
+      <button class="card-close" id="card-close" aria-label="Minimize">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M6 15l6-6 6 6" fill="none" stroke="#3a0d24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="cover" id="cover"></div>
+      <p class="now" id="now">NOW PLAYING</p>
+      <h3 id="card-title"></h3>
+      <p class="artist" id="card-artist"></p>
+      <div class="seek">
+        <span id="t-cur">0:00</span>
+        <input type="range" id="seek" min="0" max="1000" value="0" />
+        <span id="t-dur">0:00</span>
+      </div>
+      <div class="ctrls">
+        <button id="p-prev" aria-label="Previous"><svg viewBox="0 0 24 24" width="17" height="17"><path d="M6 5v14M19 5v14L8 12z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+        <button id="p-play" class="play" aria-label="Play">
+          <svg id="ic-play" viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          <svg id="ic-pause" class="hidden" viewBox="0 0 24 24" width="20" height="20"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
+        </button>
+        <button id="p-next" aria-label="Next"><svg viewBox="0 0 24 24" width="17" height="17"><path d="M18 5v14M5 5v14l11-7z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="vol">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path d="M4 9v6h4l5 4V5L8 9z" fill="#f0a6c4"/></svg>
+        <input type="range" id="vol" min="0" max="100" value="50" />
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
