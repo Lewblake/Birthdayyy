@@ -817,3 +817,17 @@ html, body { overflow-x: clip; }
 .env-alt .env-flap { background: linear-gradient(180deg, #9b7fe0, #c3adf8); }
 .env-alt .env-seal { background: radial-gradient(circle at 35% 30%, #8f6be0, #5a36b0 70%); }
 #env-cap { margin-bottom: 4px; }
+
+
+/* ===== SINCE COUNTER (taas-kaliwa) ===== */
+.since-fab { display: none; position: fixed; left: 14px; top: 68px; z-index: 55; width: 48px; height: 48px; border-radius: 50%; border: 0; place-items: center; cursor: pointer; color: #fff; background: radial-gradient(circle at 35% 30%, #ff8fb7, #e0245e 80%); box-shadow: 0 6px 20px rgba(255,60,140,.5); transition: scale .2s; }
+body.on-home .since-fab { display: grid; }
+.since-fab:active { scale: .92; }
+.since-fab.is-open { background: #3a0d24; box-shadow: 0 6px 20px rgba(0,0,0,.5); }
+.since-card { position: fixed; left: 14px; top: 124px; z-index: 55; width: min(430px, calc(100vw - 28px)); padding: 14px 14px 16px; border-radius: 20px; background: #fff0f5; border: 2px solid #ffb3cf; box-shadow: 0 12px 40px rgba(0,0,0,.45), 0 0 30px rgba(255,80,160,.35); text-align: center; animation: sinceIn .28s ease; transform-origin: top left; }
+@keyframes sinceIn { from { opacity: 0; transform: scale(.85) translateY(-8px); } to { opacity: 1; transform: none; } }
+.since-title { font: 700 15px "Rubik", sans-serif; color: #c2255c; margin: 2px 0 12px; }
+.since-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.since-box { background: #ffd6e4; border-radius: 12px; padding: 10px 2px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
+.since-box b { font: 800 clamp(18px, 5.4vw, 26px) "Rubik", sans-serif; color: #e0245e; line-height: 1; font-variant-numeric: tabular-nums; }
+.since-box small { font: 700 clamp(7px, 2.1vw, 10px) "Rubik", sans-serif; letter-spacing: .06em; color: #c2255c; }
