@@ -897,3 +897,37 @@ let heartCakeStart = () => {};
   $("pz-close").addEventListener("click", close);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !box.classList.contains("hidden")) close(); });
 })();
+
+
+/* ---------- Since the moment... counter ---------- */
+(function sinceCounter() {
+  const fab = $("since-fab"), card = $("since-card");
+  if (!fab || !card) return;
+  const start = new Date(card.dataset.since || "2024-01-01T00:00:00");
+  $("since-title-text").textContent = card.dataset.title || "Since the moment I fell in love with you";
+  const two = (n) => String(n).padStart(2, "0");
+  function tick() {
+    const now = new Date();
+    if (isNaN(start) || now < start) return;
+    let y = now.getFullYear() - start.getFullYear(), mo = now.getMonth() - start.getMonth(), d = now.getDate() - start.getDate();
+    let h = now.getHours() - start.getHours(), mi = now.getMinutes() - start.getMinutes(), s = now.getSeconds() - start.getSeconds();
+    if (s < 0) { s += 60; mi--; }
+    if (mi < 0) { mi += 60; h--; }
+    if (h < 0) { h += 24; d--; }
+    if (d < 0) { d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); mo--; }
+    if (mo < 0) { mo += 12; y--; }
+    $("sn-y").textContent = y; $("sn-mo").textContent = mo; $("sn-d").textContent = d;
+    $("sn-h").textContent = two(h); $("sn-mi").textContent = two(mi); $("sn-s").textContent = two(s);
+  }
+  let timer = null;
+  function setOpen(on) {
+    card.classList.toggle("hidden", !on);
+    fab.classList.toggle("is-open", on);
+    fab.setAttribute("aria-expanded", String(on));
+    clearInterval(timer);
+    if (on) { tick(); timer = setInterval(tick, 1000); }
+  }
+  fab.addEventListener("click", (e) => { e.stopPropagation(); setOpen(card.classList.contains("hidden")); });
+  document.addEventListener("click", (e) => { if (!card.classList.contains("hidden") && !card.contains(e.target)) setOpen(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+})();
