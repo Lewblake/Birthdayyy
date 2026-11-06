@@ -1,5 +1,8 @@
-
-const VERSION = "v9";
+/* PALITAN ANG PANGALAN/ICON NG APP: Android = "short_name" sa manifest.json + icon-192/512.png; iPhone = apple-mobile-web-app-title sa index.html + icon-192.png.
+   Tapos palitan ang VERSION sa baba at i-install ulit sa phone. */
+/* Service worker: para gumana ang website bilang app at kahit walang internet pagkatapos ma-open ng isang beses.
+   Palitan ang VERSION kapag nag-update ka ng files para ma-refresh ang cache. */
+const VERSION = "v10";
 const CACHE = "birthday-" + VERSION;
 const CORE = ["./", "./index.html", "./style.css", "./script.js", "./chat.js", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
