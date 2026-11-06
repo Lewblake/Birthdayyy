@@ -616,7 +616,7 @@
 
     <div id="chat-login" class="chat-view hidden">
       <form id="chat-login-form" class="chat-login">
-        <p class="chat-note">Miss me? HAHAHAHA</p>
+        <p class="chat-note">Chat? HAHAHAHA</p>
         <input id="chat-email" type="email" placeholder="Email" autocomplete="username" required />
         <input id="chat-pass" type="password" placeholder="Password" autocomplete="current-password" required />
         <button type="submit" class="chat-go">Log in</button>
@@ -693,6 +693,24 @@
     </div>
   </div>
 
+  <!-- ===== ⏳ "SINCE THE MOMENT..." COUNTER (taas-kaliwa, lalabas pag pinindot ang icon) =====
+       ✏️ data-since = petsa at oras ng simula (taon-buwan-araw T oras:minuto:segundo). Halimbawa: 2024-01-05T18:30:00
+       ✏️ data-title = ang nakasulat sa taas ng card. Palitan ang <svg> sa loob ng button kung gusto mo ng ibang icon. -->
+  <button id="since-fab" class="since-fab" type="button" aria-label="Show time together" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.4 1.1 4 2.3h4C14.6 6.1 16 5 18 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>
+  </button>
+  <div id="since-card" class="since-card hidden" data-since="2023-11-19T08:00:00" data-title="Since the moment I fell in love with you">
+    <p class="since-title"><span id="since-title-text"></span> <span class="since-heart">💗</span></p>
+    <div class="since-grid">
+      <div class="since-box"><b id="sn-y">0</b><small>YEARS</small></div>
+      <div class="since-box"><b id="sn-mo">0</b><small>MONTHS</small></div>
+      <div class="since-box"><b id="sn-d">0</b><small>DAYS</small></div>
+      <div class="since-box"><b id="sn-h">00</b><small>HOURS</small></div>
+      <div class="since-box"><b id="sn-mi">00</b><small>MINUTES</small></div>
+      <div class="since-box"><b id="sn-s">00</b><small>SECONDS</small></div>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
